@@ -44,6 +44,16 @@ public class AliPayController {
     public String   index() {
         return "alipay/index";
     }
+
+	@ApiOperation(value="电脑转账")
+	@RequestMapping(value="toaccount",method=RequestMethod.POST)
+	public String  toaccount(Product product,ModelMap map) {
+		logger.info("电脑转账");
+		String form  =  aliPayService.toaccount(product);
+		map.addAttribute("form", form);
+		return "alipay/pay";
+	}
+
 	@ApiOperation(value="电脑支付")
 	@RequestMapping(value="pcPay",method=RequestMethod.POST)
     public String  pcPay(Product product,ModelMap map) {

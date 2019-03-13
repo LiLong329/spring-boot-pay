@@ -39,14 +39,14 @@
 		<!-- 支付宝 SDK(项目中的支付宝SDk需要自行去官网下载打入本地仓库或者私服)-->
 		<!-- 项目中的支付宝SDk需要自行去官网下载打入本地仓库或者私服，提供下载地址：http://pan.baidu.com/s/1mi5LfhI -->
 		<dependency>
-		    <groupId>com.acts</groupId>
-		    <artifactId>alipay-trade-sdk</artifactId>
-		    <version>1.0.0</version>
+			<groupId>com.alipay.sdk</groupId>
+			<artifactId>alipay-sdk-java</artifactId>
+			<version>3.6.0.ALL</version>
 		</dependency>
 		<dependency>
-		    <groupId>com.acts</groupId>
-		    <artifactId>alipay-sdk-java</artifactId>
-		    <version>1.0.0</version>
+		    <groupId>com.alipay</groupId>
+		    <artifactId>alipay-trade-sdk</artifactId>
+		    <version>20161215</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.apache.commons</groupId>
@@ -81,13 +81,14 @@
 		<dependency>
 			<groupId>net.sourceforge.nekohtml</groupId>
 			<artifactId>nekohtml</artifactId>
-		</dependency> 
-		<!--jdom -->
-		<dependency>
-		    <groupId>jdom</groupId>
-		    <artifactId>jdom</artifactId>
-		    <version>1.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jdom/jdom2 -->
+		<dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom2</artifactId>
+			<version>2.0.6</version>
+		</dependency>
+
 		<!--httpclient -->
 		<dependency>
 		    <groupId>org.apache.httpcomponents</groupId>
@@ -122,16 +123,16 @@
 			</exclusions>
 		</dependency> -->
 		<!-- dubbo 替换  dubbox-->
-		<dependency>
-		    <groupId>com.alibaba</groupId>
-		    <artifactId>dubbo</artifactId>
-		    <version>2.6.2</version>
-		</dependency>
-		<dependency>
-	        <groupId>com.alibaba.spring.boot</groupId>
-	        <artifactId>dubbo-spring-boot-starter</artifactId>
-	        <version>2.0.0</version>
-        </dependency>
+		<!--<dependency>-->
+		    <!--<groupId>com.alibaba</groupId>-->
+		    <!--<artifactId>dubbo</artifactId>-->
+		    <!--<version>2.6.2</version>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+	        <!--<groupId>com.alibaba.spring.boot</groupId>-->
+	        <!--<artifactId>dubbo-spring-boot-starter</artifactId>-->
+	        <!--<version>2.0.0</version>-->
+        <!--</dependency>-->
         <!-- zookeeper 第三方操作工具类 -->
 		<!-- zookeeper 教程: https://blog.52itstyle.com/tag/zookeeper/ -->
 		<!-- <dependency>

@@ -94,4 +94,11 @@ public interface IAliPayService {
 	 *
 	 */
 	String appPay(Product product);
+
+	/**
+	 * 转账接口
+	 * @param product
+	 * @return
+	 */
+	String toaccount(Product product);
 }

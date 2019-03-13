@@ -2,6 +2,10 @@ package com.itstyle.modules.alipay.service.impl;
 
 import java.io.File;
 
+import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.domain.AlipayFundTransToaccountTransferModel;
+import com.alipay.api.request.*;
+import com.alipay.api.response.*;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -10,20 +14,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.alibaba.dubbo.config.annotation.Service;
+//import com.alibaba.dubbo.config.annotation.Service;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.AlipayResponse;
 import com.alipay.api.domain.AlipayTradeAppPayModel;
-import com.alipay.api.request.AlipayDataDataserviceBillDownloadurlQueryRequest;
-import com.alipay.api.request.AlipayTradeAppPayRequest;
-import com.alipay.api.request.AlipayTradeCloseRequest;
-import com.alipay.api.request.AlipayTradePagePayRequest;
-import com.alipay.api.request.AlipayTradeWapPayRequest;
-import com.alipay.api.response.AlipayDataDataserviceBillDownloadurlQueryResponse;
-import com.alipay.api.response.AlipayTradeAppPayResponse;
-import com.alipay.api.response.AlipayTradeCloseResponse;
-import com.alipay.api.response.AlipayTradePrecreateResponse;
 import com.alipay.demo.trade.config.Configs;
 import com.alipay.demo.trade.model.ExtendParams;
 import com.alipay.demo.trade.model.builder.AlipayTradePrecreateRequestBuilder;
@@ -36,6 +31,8 @@ import com.itstyle.common.model.Product;
 import com.itstyle.common.utils.CommonUtil;
 import com.itstyle.modules.alipay.service.IAliPayService;
 import com.itstyle.modules.alipay.util.AliPayConfig;
+import org.springframework.stereotype.Service;
+
 /**
  * 支付宝
  * 创建者 科帮网
@@ -311,5 +308,56 @@ public class AliPayServiceImpl implements IAliPayService {
 			e.printStackTrace();
 		}
 		return orderString ;
+	}
+
+	@Override
+	public String toaccount(Product product) {
+
+
+		AlipayClient alipayClient = AliPayConfig.getAlipayClient();
+		AlipayFundTransToaccountTransferRequest request = new AlipayFundTransToaccountTransferRequest();
+		AlipayFundTransToaccountTransferModel model = new AlipayFundTransToaccountTransferModel();
+		String totalAmount =  CommonUtil.divide(product.getTotalFee(), "100").toString();
+		model.setAmount(totalAmount);
+
+		model.setPayeeType("ALIPAY_LOGONID");
+		model.setPayeeAccount("tuikxp7379@sandbox.com");
+		model.setPayeeRealName("沙箱环境");
+
+		model.setPayerShowName("车票分佣服务商");
+
+		model.setRemark( "转账备注：分佣");
+		model.setOutBizNo(product.getOutTradeNo());
+
+
+		request.setBizModel(model);
+
+//		request.setBizContent("{" +
+//				"\"out_biz_no\":\"3142321423432\"," +
+//				"\"payee_type\":\"ALIPAY_LOGONID\"," +
+//				"\"payee_account\":\"abc@sina.com\"," +
+//				"\"amount\":\"12.23\"," +
+//				"\"payer_show_name\":\"上海交通卡退款\"," +
+//				"\"payee_real_name\":\"张三\"," +
+//				"\"remark\":\"转账备注\"" +
+//				"}");
+
+		try {
+			// 这里和普通的接口调用不同，使用的是sdkExecute
+			AlipayFundTransToaccountTransferResponse response = alipayClient.execute(request);
+
+			if(response.isSuccess()){
+				String orderString  = response.getBody();//就是orderString 可以直接给客户端请求，无需再做处理。
+				System.out.println("调用成功");
+			} else {
+				System.out.println("调用失败");
+			}
+			//System.out.println(response.getBody());
+		} catch (AlipayApiException e) {
+			e.printStackTrace();
+		}
+
+
+		return null;
 	}
 }

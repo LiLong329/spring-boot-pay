@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.alibaba.dubbo.config.annotation.Service;
+//import com.alibaba.dubbo.config.annotation.Service;
 import com.itstyle.common.constants.Constants;
 import com.itstyle.common.constants.PayWay;
 import com.itstyle.common.model.Product;
@@ -17,6 +17,8 @@ import com.itstyle.modules.unionpay.service.IUnionPayService;
 import com.itstyle.modules.unionpay.util.AcpService;
 import com.itstyle.modules.unionpay.util.SDKConfig;
 import com.itstyle.modules.unionpay.util.UnionConfig;
+import org.springframework.stereotype.Service;
+
 @Service
 @Component
 public class UnionPayServiceImpl implements IUnionPayService{

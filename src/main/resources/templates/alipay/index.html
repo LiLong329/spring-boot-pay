@@ -18,6 +18,7 @@
 			<h2 id="tab4" name="tab">退 款 查 询</h2>
 			<h2 id="tab5" name="tab">交 易 关 闭</h2>
 			<h2 id="tab6" name="tab">扫码支付</h2>
+			<h2 id="tab7" name="tab">支付转账</h2>
 		</div>
 		<form name=alipayment action=pcPay method=post
 			target="_blank">
@@ -199,6 +200,40 @@
 						<span class="new-btn-login-sp">
 							<button class="new-btn-login" type="submit"
 								style="text-align: center;">付 款</button>
+						</span> <span class="note-help">如果您点击“付款”按钮，即表示您同意该次的执行操作。</span>
+					</dd>
+				</dl>
+			</div>
+		</form>
+		<form name=toaccount  action=toaccount method=post
+			  target="_blank">
+			<div id="body7"  class="tab-content" name="divcontent">
+				<dl class="content">
+					<dt>商户订单号 ：</dt>
+					<dd>
+						<input  name="outTradeNo" />
+					</dd>
+					<hr class="one_line">
+					<dt>订单名称 ：</dt>
+					<dd>
+						<input name="subject" />
+					</dd>
+					<hr class="one_line">
+					<dt>付款金额 ：</dt>
+					<dd>
+						<input  name="totalFee" />
+					</dd>
+					<hr class="one_line">
+					<dt>商品描述：</dt>
+					<dd>
+						<input   name="body" />
+					</dd>
+					<hr class="one_line">
+					<dt></dt>
+					<dd  >
+						<span class="new-btn-login-sp">
+							<button class="new-btn-login" type="submit"
+									style="text-align: center;">付 款</button>
 						</span> <span class="note-help">如果您点击“付款”按钮，即表示您同意该次的执行操作。</span>
 					</dd>
 				</dl>
