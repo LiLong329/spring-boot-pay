@@ -42,6 +42,7 @@ public class AliPayController {
 	@ApiOperation(value="支付主页")
 	@RequestMapping(value="index",method=RequestMethod.GET)
     public String   index() {
+		System.out.println("0------");
         return "alipay/index";
     }
 

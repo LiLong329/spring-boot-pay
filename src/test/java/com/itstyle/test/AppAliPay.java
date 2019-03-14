@@ -7,6 +7,9 @@ import com.alipay.api.request.AlipayTradeAppPayRequest;
 import com.alipay.api.response.AlipayTradeAppPayResponse;
 import com.alipay.demo.trade.config.Configs;
 import com.itstyle.modules.alipay.util.AliPayConfig;
+
+import java.util.Optional;
+
 /**
  * 测试APP服务端逻辑
  * 创建者 科帮网
@@ -15,6 +18,13 @@ import com.itstyle.modules.alipay.util.AliPayConfig;
  */
 public class AppAliPay{
 	public static void main(String[] args) {
+		AlipayClient alipayClient = null;
+		boolean ss = Optional.ofNullable(alipayClient).map(AlipayClient::toString).equals("ss");
+		System.out.println(ss);
+
+	}
+
+	private static void init() {
 		Configs.init("E:\\zfbinfo.properties");
 		// 实例化客户端
 		AlipayClient alipayClient = AliPayConfig.getAlipayClient();
